@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "AoN Creature Exporter",
+  "author": "Charles Wust",
+  "version": "0.1",
+
+  "description": "Allows you load creatures from the Archive of Nethys and upload them into Roll20",
+  "icons": {
+    "48": "icons/aonexporter.png"
+  },
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": "icons/aonexporter-32.png",
+    "default_title": "Export creature",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://2e.aonprd.com/Monsters.aspx*", "https://app.roll20.net/editor/"],
+      "js": ["assets/js/jquery-3.6.3.min.js", "content_scripts/export-creature.js"]
+    }
+  ],
+  "permissions": [
+    "activeTab", "storage"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "aonexporter@cwust.br"
+    }
+  }
+
+}
